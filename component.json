@@ -1,5 +1,7 @@
 {
 	"name": "require-stylus",
 	"version": "0.2.0",
-	"main": "require-stylus.js"
+	"main": "require-stylus.js",
+	"dependecies": {
+	}
 }
