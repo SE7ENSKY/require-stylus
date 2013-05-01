@@ -20,6 +20,12 @@ require.config({
 require(['styl!styles']); // styles.styl
 ```
 
+ToDo
+----
+* optimizer support
+* handle errors
+* @import support
+
 Authors
 -------
 * [Ivan Kravchenko](http://github.com/krava)
