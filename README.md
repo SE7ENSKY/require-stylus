@@ -11,9 +11,10 @@ Usage
 -----
 ```javascript
 require.config({
-  "paths": {
-    "stylus": "components/require-stylus/stylus",
-    "styl": "components/require-stylus/require-stylus"
+  "map": {
+    "*": {
+      "styl": "components/require-stylus/require-stylus"
+    }
   }
 });
 
@@ -23,9 +24,8 @@ require(['styl!styles']); // styles.styl
 ToDo
 ----
 * optimizer support
-* handle errors
-* @import support
-* remove "stylus": "components/require-stylus/stylus" from "paths"
+* handle errors in requirejs way
+* @import support for stylus
 
 Authors
 -------
