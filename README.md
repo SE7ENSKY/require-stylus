@@ -25,6 +25,7 @@ ToDo
 * optimizer support
 * handle errors
 * @import support
+* remove "stylus": "components/require-stylus/stylus" from "paths"
 
 Authors
 -------
