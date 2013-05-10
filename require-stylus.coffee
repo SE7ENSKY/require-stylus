@@ -37,7 +37,7 @@ define ['stylus'], ->
 
 	buildMap = {}
 
-	version: '1.0.0'
+	version: '1.0.1'
 
 	load: (name, parentRequire, load, config) ->
 		path = parentRequire.toUrl "#{name}.styl"

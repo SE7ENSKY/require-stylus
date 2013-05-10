@@ -63,7 +63,7 @@ define(['stylus'], function() {
   })();
   buildMap = {};
   return {
-    version: '1.0.0',
+    version: '1.0.1',
     load: function(name, parentRequire, load, config) {
       var path;
 
