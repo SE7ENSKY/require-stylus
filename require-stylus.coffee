@@ -47,9 +47,28 @@ define ['stylus'], ->
 				throw err if err
 				cssInsertString = """
 					define(function(){
-						var styleTag = document.createElement('style');
-						styleTag.innerHTML = #{JSON.stringify css};
-						document.head.appendChild(styleTag);
+						var css = #{JSON.stringify css},
+						    head = document.getElementsByTagName('head')[0],
+						    style = document.createElement('style');
+
+						var imports = css.match(new RegExp('@import\\\\s+url\\\\(.*\\\\);?', 'g'));
+						imports.forEach(function(i){
+							css = css.replace(i, '');
+							var url = i.match(new RegExp('url\\\\((.*)\\\\)'))[1];
+							var linkElement = document.createElement('link');
+							linkElement.rel = 'stylesheet';
+							linkElement.type = 'text/css';
+							linkElement.href = JSON.parse(url);
+							head.appendChild(linkElement);
+						});
+						style.type = 'text/css';
+						if (style.styleSheet){
+							style.styleSheet.cssText = css;
+						} else {
+							style.appendChild(document.createTextNode(css));
+						}
+
+						head.appendChild(style);
 					});
 				"""
 				if config.isBuild

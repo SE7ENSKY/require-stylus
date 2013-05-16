@@ -9,6 +9,11 @@ Features
 * insert compiled CSS into <head>
 * optimize support (resulting CSS will be compiled into resulting javascript)
 
+Browser support
+---------------
+Development works on all major browsers.
+IE7+ works after optimize.
+
 Installation
 ------------
 ```bower install require-stylus```
