@@ -6,7 +6,7 @@ RequireJS Stylus loader module.
 Features
 --------
 * compile *.styl files on-the-fly
-* insert compiled CSS into <head>
+* insert compiled CSS into ```<head>```
 * optimize support (resulting CSS will be compiled into resulting javascript)
 
 Browser support
