@@ -76,7 +76,7 @@ define(['stylus'], function() {
           if (err) {
             throw err;
           }
-          cssInsertString = "define(function(){\n	var css = " + (JSON.stringify(css)) + ",\n	    head = document.getElementsByTagName('head')[0],\n	    style = document.createElement('style');\n\n	var imports = css.match(new RegExp('@import\\\\s+url\\\\(.*\\\\);?', 'g'));\n	imports.forEach(function(i){\n		css = css.replace(i, '');\n		var url = i.match(new RegExp('url\\\\((.*)\\\\)'))[1];\n		var linkElement = document.createElement('link');\n		linkElement.rel = 'stylesheet';\n		linkElement.type = 'text/css';\n		linkElement.href = JSON.parse(url);\n		head.appendChild(linkElement);\n	});\n	style.type = 'text/css';\n	if (style.styleSheet){\n		style.styleSheet.cssText = css;\n	} else {\n		style.appendChild(document.createTextNode(css));\n	}\n\n	head.appendChild(style);\n});";
+          cssInsertString = "define(function(){\n	var css = " + (JSON.stringify(css)) + ",\n	    head = document.getElementsByTagName('head')[0],\n	    style = document.createElement('style');\n\n	var imports = css.match(new RegExp('@import\\\\s+url\\\\(.*\\\\);?', 'g'));\n	if (imports) {\n		imports.forEach(function(i){\n			css = css.replace(i, '');\n			var url = i.match(new RegExp('url\\\\((.*)\\\\)'))[1];\n			var linkElement = document.createElement('link');\n			linkElement.rel = 'stylesheet';\n			linkElement.type = 'text/css';\n			linkElement.href = JSON.parse(url);\n			head.appendChild(linkElement);\n		});\n	}\n	style.type = 'text/css';\n	if (style.styleSheet){\n		style.styleSheet.cssText = css;\n	} else {\n		style.appendChild(document.createTextNode(css));\n	}\n\n	head.appendChild(style);\n});";
           if (config.isBuild) {
             buildMap[name] = cssInsertString;
           }

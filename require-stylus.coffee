@@ -52,15 +52,17 @@ define ['stylus'], ->
 						    style = document.createElement('style');
 
 						var imports = css.match(new RegExp('@import\\\\s+url\\\\(.*\\\\);?', 'g'));
-						imports.forEach(function(i){
-							css = css.replace(i, '');
-							var url = i.match(new RegExp('url\\\\((.*)\\\\)'))[1];
-							var linkElement = document.createElement('link');
-							linkElement.rel = 'stylesheet';
-							linkElement.type = 'text/css';
-							linkElement.href = JSON.parse(url);
-							head.appendChild(linkElement);
-						});
+						if (imports) {
+							imports.forEach(function(i){
+								css = css.replace(i, '');
+								var url = i.match(new RegExp('url\\\\((.*)\\\\)'))[1];
+								var linkElement = document.createElement('link');
+								linkElement.rel = 'stylesheet';
+								linkElement.type = 'text/css';
+								linkElement.href = JSON.parse(url);
+								head.appendChild(linkElement);
+							});
+						}
 						style.type = 'text/css';
 						if (style.styleSheet){
 							style.styleSheet.cssText = css;
